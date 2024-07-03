@@ -90,11 +90,13 @@ function checkWin(board)
             });
             if(count%2==0){
                 gameBoard.update(playerTwo,choice)
+                checkWin(board)
                 break;
             }
             
             else{
                 gameBoard.update(playerOne,choice)
+                checkWin(board)
                 break;
             }
         }
