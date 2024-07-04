@@ -75,7 +75,6 @@ function checkWin(board)
     function checkTie(board){
         if(!checkWin(board)){        
         let condition = board.every(cell => cell!=="")
-        console.log(condition)
         if(condition){
             const results = document.getElementById("results")
             results.innerHTML= "game tied"
@@ -98,7 +97,6 @@ function checkWin(board)
             });
             if(count%2==0){
                 gameBoard.update(playerTwo,choice)
-                console.log("check win "+checkWin(board))
                 checkWin(board)
                 checkTie(board)
                 break;
@@ -106,7 +104,6 @@ function checkWin(board)
             
             else{
                 gameBoard.update(playerOne,choice)
-                console.log("check win "+checkWin(board))
                 checkWin(board)
                 checkTie(board)
                 break;
