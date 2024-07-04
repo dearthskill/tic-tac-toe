@@ -72,7 +72,8 @@ function checkWin(board)
     }
     
     
-    function checkTie(board){        
+    function checkTie(board){
+        if(!checkWin(board)){        
         let condition = board.every(cell => cell!=="")
         console.log(condition)
         if(condition){
@@ -80,6 +81,7 @@ function checkWin(board)
             results.innerHTML= "game tied"
         }
         return condition
+        }
 
     }
     
