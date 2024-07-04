@@ -27,7 +27,6 @@ const gameBoard = (function(){
     const update = (player,index)=> {
         if(board[index]===''){
             board[index]= player.getSymbol()
-            console.log(player.getSymbol())
         }
     }
     
@@ -54,26 +53,34 @@ function checkWin(board)
                 if(list[a]!=''&& list[b]!=''&& list[c]!=''){
                     if(list[a]==playerOne.getSymbol()){
                         winner = document.getElementById("p1").value
-                        console.log(winner)
                     }
                     else{
                         winner = document.getElementById("p2").value
-                        console.log(winner)
                     }
                     const results = document.getElementById("results")
                     results.innerHTML = `${winner} wins!`
                     return true
                 }
                 else{
-                    return false
+                    continue
                 }
+            }
+            else{
+                continue;
             }
         }
     }
     
     
     function checkTie(board){        
-        return board.every(cell => cell!=="")
+        let condition = board.every(cell => cell!=="")
+        console.log(condition)
+        if(condition){
+            const results = document.getElementById("results")
+            results.innerHTML= "game tied"
+        }
+        return condition
+
     }
     
     
@@ -85,18 +92,21 @@ function checkWin(board)
             board.forEach(element => {
                 if(element==''){
                     count+=1;
-                    console.log(count)
                 }
             });
             if(count%2==0){
                 gameBoard.update(playerTwo,choice)
+                console.log("check win "+checkWin(board))
                 checkWin(board)
+                checkTie(board)
                 break;
             }
             
             else{
                 gameBoard.update(playerOne,choice)
+                console.log("check win "+checkWin(board))
                 checkWin(board)
+                checkTie(board)
                 break;
             }
         }
@@ -121,5 +131,3 @@ function gameFlow(){
     const board = gameBoard.showBoard();
     render()
 }
-
-
